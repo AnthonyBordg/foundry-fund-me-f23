@@ -7,9 +7,7 @@ import {HelperConfig} from "./HelperConfig.s.sol";
 contract DeployFundMe is Script {
     function deployFundMe() public returns (FundMe) {
         HelperConfig helperConfig = new HelperConfig(); // This comes with our mocks!
-        address priceFeed = helperConfig
-            .getConfigByChainId(block.chainid)
-            .priceFeed;
+        address priceFeed = helperConfig.getConfigByChainId(block.chainid).priceFeed;
 
         vm.startBroadcast();
         FundMe fundMe = new FundMe(priceFeed);
